@@ -13,4 +13,9 @@ class IndexController extends Controller
     public function show() {
         return inertia('Index/Show');
     }
+
+    public function greeting($name){
+        $message = "Hello, $name!";
+        return inertia('Index/Greeting', ['message' => $message]);
+    }
 }

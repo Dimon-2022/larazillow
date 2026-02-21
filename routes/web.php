@@ -7,3 +7,5 @@ Route::get('/', [IndexController::class, 'index']);
 
 
 Route::get('/show', [IndexController::class, 'show']);
+
+Route::get('/greeting/{name}', [IndexController::class, 'greeting']);
