@@ -15,7 +15,7 @@ class ListingController extends Controller
         return inertia(
             'Listing/Index',
             [
-                'listings' => Listing::all()
+                'listings' => Listing::latest()->get()
             ]
         );
     }
@@ -33,7 +33,9 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        Listing::create($request->all());
+
+        return redirect()->route('listing.index')->with('success', 'Listing created successfully.');
     }
 
     /**
