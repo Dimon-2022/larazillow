@@ -1,12 +1,15 @@
 <template>
     <div v-for="listing in listings" :key="listing.id">
         <div>
-            <Link :href="`/listing/${listing.id}`">
+            <Link :href="route('listing.show', listing.id)">
                 <ListingAddress :listing="listing" />
             </Link>
         </div>
         <div>
-            <Link :href="`/listing/${listing.id}/edit`">Edit</Link>
+            <Link :href="route('listing.edit', listing.id)">Edit</Link>
+        </div>
+        <div>
+            <Link method="DELETE" :href="route('listing.destroy', listing.id)" as="button">Delete</Link>
         </div>
     </div>
 </template>
@@ -19,4 +22,5 @@ import ListingAddress from "../../Components/ListingAddress.vue";
 defineProps({
     listings: Array,
 })
+
 </script>
