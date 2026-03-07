@@ -1,10 +1,10 @@
 <template>
     <nav class="navigation">
-        <Link href="/" class="nav-item">
+        <Link href="/listing" class="nav-item">
             <img src="../../images/ukrposhta.png" alt="Ukrposhta" class="nav-logo">
-            Index
+            Listings
         </Link>
-        <Link href="/show"  class="nav-item">Show</Link>
+        <Link href="/listing/create"  class="nav-item">New Listing</Link>
     </nav>
 
 <!--    <div>{{timer}}</div>-->
