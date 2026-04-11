@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class RealtorListingController extends Controller
 {
     public function index(){
-        $user = Auth::user();
-        $listings = $user->listings()->get();
 
-        return inertia('Realtor/Index', $listings);
+        return inertia('Realtor/Index', [
+            'listings' => Auth::user()->listings,
+        ]);
     }
 }
