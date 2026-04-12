@@ -4,7 +4,7 @@
         Filters
     </section>
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <Box v-for="listing in listings" :key="listing.id">
+        <Box v-for="listing in listings" :key="listing.id" :data-dima="listing.id">
             <div class="flex flex-col md:flex-row gap-2 md:items-center justify-between">
                 <div>
                     <div class="xl:flex items-center gap-2">
