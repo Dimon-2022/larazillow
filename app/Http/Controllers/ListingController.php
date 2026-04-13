@@ -143,19 +143,9 @@ class ListingController extends Controller
                 'street' => 'required|string|max:255',
                 'street_nr' => 'required|integer|min:1|max:1000',
                 'price' => 'required|integer|min:10000|max:10000000',
-
             ])
         );
 
         return redirect()->route('listing.index')->with('success', 'Listing was changed successfully.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Listing $listing)
-    {
-        $listing->delete();
-        return redirect()->back()->with('success', 'Listing was deleted successfully.');
     }
 }

@@ -22,7 +22,7 @@ class ListingPolicy
     }
 
     /**
-     * Determine whether the user can view the model
+     * Determine whether the udestroyser can view the model
      */
     public function view(?User $user, Listing $listing): bool
     {
