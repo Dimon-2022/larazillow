@@ -11,7 +11,7 @@ class RealtorListingController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Listing::class, 'listing');
+        //$this->authorizeResource(Listing::class, 'listing');
     }
 
     public function index(){
