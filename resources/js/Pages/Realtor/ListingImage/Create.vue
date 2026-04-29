@@ -9,32 +9,47 @@
             </section>
         </form>
     </Box>
+
+    <Box v-if="listingImages.length" class="mt-4">
+        <template #header>Current Listing Images</template>
+        <section class="mt-4 grid grid-cols-3 gap-4">
+            <div v-for="image in listingImages" :key="image.id">
+                <img :src="image.src" class="rounded-md"/>
+            </div>
+        </section>
+    </Box>
 </template>
 
 <script setup>
     import {computed} from 'vue'
     import Box from "../../../Components/UI/Box.vue";
-    import {useForm} from "@inertiajs/vue3";
-    import listing from "../../Listing/Index/Components/Listing.vue";
+    import {useForm, router} from "@inertiajs/vue3";
+    import NProgress from 'nprogress'
 
    const props = defineProps({
         listing: Object
+    })
+
+    router.on('progress', (event) => {
+        if(event.detail.progress?.percentage){
+            NProgress.set((event.detail.progress.percentage / 100) * 0.9)
+        }
     })
 
     const form = useForm({
         images: [],
     })
 
+    const listingImages = computed(() => props.listing?.images ?? [])
+
     const canUpload = computed(()=>{
        return form.images.length > 0 ? true : false
     })
 
     const upload = () =>{
-       form.post(
-        route('realtor.listing.image.store', {listing: props.listing.id})),
-           {
-               onSuccess: () => form.reset('images'),
-           }
+       form.post(route('realtor.listing.image.store', {listing: props.listing.id}), {
+           onSuccess: () => form.reset('images'),
+       })
     }
 
     const addFiles = (event) => {
