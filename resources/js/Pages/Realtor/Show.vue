@@ -10,15 +10,15 @@
         </Box>
 
         <div v-else class="md:col-span-7 items-center">
-            This is displayed when there are offers
+            <Offer v-for="offer in props.listing.offers" :key="offer.id" class="mb-4" :offer="offer" :listing-price="props.listing.price"/>
         </div>
 
         <Box class="md:col-span-5">
             <template #header>Basic Info</template>
-            <Price :price="listing.price" class="text-2xl font-bold"/>
+            <Price :price="props.listing.price" class="text-2xl font-bold"/>
 
-            <ListingSpace :listing="listing" class="text-lg"/>
-            <ListingAddress :listing="listing" class="text-gray-500"/>
+            <ListingSpace :listing="props.listing" class="text-lg"/>
+            <ListingAddress :listing="props.listing" class="text-gray-500"/>
         </Box>
     </section>
 </template>
@@ -30,7 +30,8 @@ import Price from "@/Components/Price.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import {computed} from "vue";
-import listing from "../Listing/Index/Components/Listing.vue";
+import listing from "@/Pages/Listing/Index/Components/Listing.vue";
+import Offer from "@/Pages/Realtor/Show/Components/Offer.vue";
 
 const hasOffers = computed(() => props.listing.offers.length);
 
