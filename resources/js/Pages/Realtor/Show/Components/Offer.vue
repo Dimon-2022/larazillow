@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div>
-                <Link v-if="notSold" method="put" class="btn-outline text-xs font-medium" as="button" :href="route('realtor.offer.accept', {offer: offer.id})">Accept</Link>
+                <Link v-if="!isSold" method="put" class="btn-outline text-xs font-medium" as="button" :href="route('realtor.offer.accept', {offer: offer.id})">Accept</Link>
             </div>
         </section>
     </Box>
@@ -33,11 +33,10 @@
     const props = defineProps({
         offer: Object,
         listingPrice: Number,
+        isSold: Boolean,
     })
 
     const difference = computed(() => props.offer.amount - props.listingPrice)
 
     const madeOn = computed(()=> new Date(props.offer.created_at).toDateString())
-
-    const notSold = computed(()=> !props.offer.accepted_at && !props.offer.rejected_at)
 </script>
