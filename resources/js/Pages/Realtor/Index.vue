@@ -43,6 +43,7 @@
     <section v-if="listings.data.length" class="w-full flex justify-center mt-4 mb-4">
         <Pagination :links="listings.links"/>
     </section>
+    <EmptyState v-else>No listings yet</EmptyState>
 </template>
 
 <script setup>
@@ -53,6 +54,7 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import {Link} from "@inertiajs/vue3";
 import RealtorFilters from "@/Pages/Realtor/Index/Components/RealtorFilters.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
+import EmptyState from "../../Components/UI/EmptyState.vue";
 
 defineProps(
     {
