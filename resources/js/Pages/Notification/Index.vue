@@ -12,9 +12,10 @@
                 </span>
             </div>
             <div>
-                <button v-if="!notification.read_at" class="btn-outline text-xs font-medium uppercase">
+                <Link v-if="!notification.read_at" class="btn-outline text-xs font-medium uppercase"
+                      :href="route('notification.seen', { notification: notification.id})" as="button" method="put">
                     Mark as read
-                </button>
+                </Link>
             </div>
         </div>
     </section>
@@ -22,7 +23,8 @@
     <EmptyState v-else>No notifications yet</EmptyState>
 
     <section v-if="notifications.data.length" class="w-full flex justify-center">
-        <Pagination :links="notifications.links"/>>
+        <Pagination :links="notifications.links"/>
+        >
     </section>
 </template>
 
